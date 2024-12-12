@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>BANCO W PI</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">BANCO W PI</h1>
+        <form id="formulario">
+            <div class="form-group">
+                <label for="practicante-select">Practicante:</label>
+                <select id="practicante-select" class="form-control mb-3" required>
+                    <option value="">Seleccione un practicante</option>
+                    <option value="Jaider Martinez">Jaider Martinez</option>
+                    <option value="James Ortiz">James Ortiz</option>
+                    <option value="Sebastian Calderón">Sebastian Calderón</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="importante-select">IMPORTANTE:</label>
+                <select id="importante-select" class="form-control mb-3" onchange="toggleInput('importante-input')" required>
+                    <option value="">Seleccione</option>
+                    <option value="Escribir">Escribir</option>
+                    <option value="N/A">N/A</option>
+                </select>
+                <input type="text" class="form-control mb-3" id="importante-input" placeholder="Escribir aquí..." disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="pendientes-select">PENDIENTES:</label>
+                <select id="pendientes-select" class="form-control mb-3" onchange="toggleInput('pendientes-input')" required>
+                    <option value="">Seleccione</option>
+                    <option value="Escribir">Escribir</option>
+                    <option value="N/A">N/A</option>
+                </select>
+                <input type="text" class="form-control mb-3" id="pendientes-input" placeholder="Escribir aquí..." disabled>
+            </div>
+
+            <input type="number" class="form-control input-spacing" id="creaciones-input" placeholder="CREACIONES REALIZADAS" required>
+            <input type="number" class="form-control input-spacing" id="paz-salvo-input" placeholder="PAZ Y SALVO REALIZADOS" required>
+            <input type="number" class="form-control input-spacing" id="reasignaciones-input" placeholder="REASIGNACIONES REALIZADAS" required>
+            <input type="number" class="form-control input-spacing" id="desbloqueos-input" placeholder="DESBLOQUEOS REALIZADOS" required>
+            <input type="number" class="form-control input-spacing" id="actividades-input" placeholder="ACTIVIDADES MANUALES" required>
+            <input type="number" class="form-control input-spacing" id="service-manager-input" placeholder="SERVICE MANAGER PDTE" required>
+
+            <div class="form-group">
+                <label for="smartap-select">Monitoreo en SmarTap:</label>
+                <select id="smartap-select" class="form-control mb-3" onchange="toggleSmartapInputs()" required>
+                    <option value="">Seleccione</option>
+                    <option value="1">Sin Novedad</option>
+                    <option value="2">Diferencia de Llamadas</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="llamadas-a-input">Llamadas en Link A:</label>
+                <input type="number" class="form-control mb-3" id="llamadas-a-input" placeholder="Número de llamadas" disabled>
+            </div>
+
+            <div class="form-group">
+                <label for="llamadas-b-input">Llamadas en Link B:</label>
+                <input type="number" class="form-control mb-3" id="llamadas-b-input" placeholder="Número de llamadas" disabled>
+            </div>
+
+            <button type="button" class="btn" onclick="enviarMensaje()">Enviar Mensaje</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
