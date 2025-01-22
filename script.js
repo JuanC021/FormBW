@@ -5,6 +5,7 @@ function toggleInput(inputId) {
 
     if (selectElement.value === "Escribir") {
         inputElement.disabled = false;
+        permitirSaltosDeLinea(inputId);
     } else {
         inputElement.disabled = true;
         inputElement.value = ""; // Limpiar el campo si se deshabilita
@@ -32,7 +33,7 @@ function toggleSmartapInputs() {
 
 // Función para enviar el mensaje
 function enviarMensaje() {
-    const practicante = document.getElementById("practicante-select").value;
+    const practicante = document.getElementById("practicante-input").value;
     const importante = document.getElementById("importante-select").value;
     const importanteInput = document.getElementById("importante-input").value;
     const pendientes = document.getElementById("pendientes-select").value;
@@ -74,7 +75,7 @@ function enviarMensaje() {
     mensaje += `Reasignaciones realizadas: ${reasignaciones}\n`;
     mensaje += `Desbloqueos realizados: ${desbloqueos}\n`;
     mensaje += `Actividades manuales: ${actividades}\n`;
-    mensaje += `Service manager pdte: ${serviceManager}\n\n`;
+    mensaje += `Service manager realizados: ${serviceManager}\n\n`;
 
      // Añadir mensaje de SmartAP
     if (smartap === "2") {
@@ -119,7 +120,7 @@ function enviarMensaje() {
 
 // Función para limpiar el formulario
 function clearForm() {
-    document.getElementById("practicante-select").value = "";
+    document.getElementById("practicante-input").value = "";
     document.getElementById("importante-select").value = "";
     document.getElementById("importante-input").value = "";
     document.getElementById("pendientes-select").value = "";
@@ -134,5 +135,23 @@ function clearForm() {
     document.getElementById("llamadas-a-input").value = "";
     document.getElementById("llamadas-b-input").value = "";
 }
+
+
+// Función para permitir saltos de línea con Enter en los campos de texto
+function permitirSaltosDeLinea(id) {
+    const inputElement = document.getElementById(id);
+
+    inputElement.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Evita que se envíe el formulario o cambie de campo
+            inputElement.value += "\n-"; // Agrega un salto de línea
+        }
+    });
+}
+
+// Aplicar la función a los campos de IMPORTANTE y PENDIENTES
+permitirSaltosDeLinea("importante-select")
+permitirSaltosDeLinea("pendientes-select")
+
 
 
